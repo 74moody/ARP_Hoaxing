@@ -9,7 +9,7 @@ import optparse
 def intro():
     toolbar_width = 5
     BAR_width = 5
-    sys.stdout.write("[*] Starting ARP Spoofer " + "[%s]" % (" " * BAR_width))
+    sys.stdout.write("[*] Starting ARP Spoofer, Created by Mohamed , insta: @msecurity.bh\t" + "[%s]" % (" " * BAR_width))
     sys.stdout.flush()
     sys.stdout.write("\b" * (BAR_width + 1))
     for i in range(BAR_width):
@@ -19,18 +19,32 @@ def intro():
     sys.stdout.write("]\n")  # this ends the progress bar
 intro()
 
-def end():
-    toolbar_width = 3
-    BAR_width = 3
-    sys.stdout.write("[-] Ctrl + C [-] Restoring ARP Tables" + "[%s]" % (" " * BAR_width))
-    sys.stdout.flush()
-    sys.stdout.write("\b" * (BAR_width + 1))
-    for i in range(BAR_width):
-        time.sleep(0.6)  # do real work here
-        sys.stdout.write("P.l.e.a.s.W.a.i.t\n")
-        sys.stdout.flush()
-    sys.stdout.write("]\n")  # this ends the progress bar
-
+def ascii_print():
+    print("""
+       █████████   ███████████   ███████████                               
+  ███░░░░░███ ░░███░░░░░███ ░░███░░░░░███                              
+ ░███    ░███  ░███    ░███  ░███    ░███                              
+ ░███████████  ░██████████   ░██████████                               
+ ░███░░░░░███  ░███░░░░░███  ░███░░░░░░                                
+ ░███    ░███  ░███    ░███  ░███                                      
+ █████   █████ █████   █████ █████                                     
+░░░░░   ░░░░░ ░░░░░   ░░░░░ ░░░░░                                      
+                                                                       
+                                                                       
+                                                                       
+ █████   █████                                 ███                     
+░░███   ░░███                                 ░░░                      
+ ░███    ░███   ██████   ██████   █████ █████ ████  ████████    ███████
+ ░███████████  ███░░███ ░░░░░███ ░░███ ░░███ ░░███ ░░███░░███  ███░░███
+ ░███░░░░░███ ░███ ░███  ███████  ░░░█████░   ░███  ░███ ░███ ░███ ░███
+ ░███    ░███ ░███ ░███ ███░░███   ███░░░███  ░███  ░███ ░███ ░███ ░███
+ █████   █████░░██████ ░░████████ █████ █████ █████ ████ █████░░███████
+░░░░░   ░░░░░  ░░░░░░   ░░░░░░░░ ░░░░░ ░░░░░ ░░░░░ ░░░░ ░░░░░  ░░░░░███
+                                                               ███ ░███
+                                                              ░░██████ 
+                                                               ░░░░░░  
+    """)
+ascii_print()
 
 # user input handler
 def user_arguments():
@@ -81,7 +95,7 @@ try:
         print("\r[+] Spoofing.." + str(sent_packets_count),end="")
         time.sleep(2)
 except KeyboardInterrupt:
-    end()
+    print("[-] Ctrl + C [-] Restoring ARP Tables")
     restore_arp(options.Target_ip, options.Router_ip)
     restore_arp(options.Router_ip, options.Target_ip)
 
